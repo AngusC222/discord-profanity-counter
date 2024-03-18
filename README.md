@@ -1,5 +1,5 @@
 # Discord Profanity Counter Bot
-<center>![Top.gg](https://img.shields.io/badge/Top.gg-Coming%20Soon...-black?labelColor=darkred&style=for-the-badge)</center>
+![Top.gg](https://img.shields.io/badge/Top.gg-Coming%20Soon...-black?labelColor=darkred&style=for-the-badge)
 
 > A simple fun bot to check your profanity usage in a server
 > 
