@@ -14,10 +14,10 @@ bot = interactions.Client(token=os.getenv('token'))
 )
 async def profanitychannel(ctx):
     profanityCount = 0
-    for message in await ctx.channel.history(limit=1000).flatten():
+    for message in await ctx.channel.history(limit=500).flatten():
         profanityCount += sum((message.content.lower().count(profanity) for profanity in ("fuck", "arse", "ass", "cock", "bitch", "bloody", "blowjob", "bugger", "bullshit", "shit", "damn", "dick", "prick", "pussy", "shit", "hell", "slut", "twat", "wanker", "whore")))
     
-    await ctx.send(f"Watch your language! You have used profanity `{profanityCount}` times in this channel.")
+    await ctx.send(f"Watch your language! You have used profanity `{profanityCount}` times in this channel.\n\n**Note:** *Bot only scans the last 500 messages sent in the channel*")
 
 @interactions.slash_command(
     name="profanityuser",
@@ -31,12 +31,13 @@ async def profanitychannel(ctx):
         }
     ]
 )
-async def profanityuser(ctx, user: interactions.Member):
+async def profanityuser(ctx, user):
     profanityCount = 0
-    for message in [message for message in await ctx.channel.history(limit=1000).flatten() if message.author.id == user.id]:
-        profanityCount += sum((message.content.lower().count(profanity) for profanity in ("fuck", "arse", "ass", "cock", "bitch", "bloody", "blowjob", "bugger", "bullshit", "shit", "damn", "dick", "prick", "pussy", "shit", "hell", "slut", "twat", "wanker", "whore")))
+    for message in [message for message in await ctx.channel.history(limit=500).flatten() if message.author.id == user.id]:
+        print("ran loop")
+        profanityCount += sum((message.content.lower().count(profanity) for profanity in ("fuck", "arse", "ass", "cock", "bitch", "bloody", "blowjob", "bugger", "bullshit", "shit", "damn", "dick", "prick", "pussy", "shit", "hell", "slut", "twat", "wank", "whore")))
     
-    await ctx.send(f"Watch your language! {user.mention} has used profanity `{profanityCount}` times in this channel.")
+    await ctx.send(f"Watch your language! {user.mention} has used profanity `{profanityCount}` times in this channel.\n\n**Note:** *Bot only scans the last 500 messages sent in the channel*")
 
 @interactions.listen()
 async def on_startup():
