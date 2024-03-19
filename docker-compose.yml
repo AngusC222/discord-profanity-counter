@@ -1,0 +1,6 @@
+version: '3'
+services:
+  profanitycounter:
+    build: .
+    ports:
+      - "5000:5000"
