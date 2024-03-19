@@ -34,7 +34,6 @@ async def profanitychannel(ctx):
 async def profanityuser(ctx, user):
     profanityCount = 0
     for message in [message for message in await ctx.channel.history(limit=500).flatten() if message.author.id == user.id]:
-        print("ran loop")
         profanityCount += sum((message.content.lower().count(profanity) for profanity in ("fuck", "arse", "ass", "cock", "bitch", "bloody", "blowjob", "bugger", "bullshit", "shit", "damn", "dick", "prick", "pussy", "shit", "hell", "slut", "twat", "wank", "whore")))
     
     await ctx.send(f"Watch your language! {user.mention} has used profanity `{profanityCount}` times in this channel.\n\n**Note:** *Bot only scans the last 500 messages sent in the channel*")
